@@ -6,7 +6,7 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import useAuth from '../../../hooks/useAuth';
+import useAuth from './../../../hooks/useAuth';
 
 const style = {
     position: 'absolute',
@@ -23,7 +23,7 @@ const style = {
 const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBookingSuccess }) => {
     const { name, time } = booking;
     const { user } = useAuth();
-    const initialInfo = { patientName: user.displayName, email: user.email, phone: '' };
+    const initialInfo = { patientName: user.displayName, email: user.email, phone: '' }
     const [bookingInfo, setBookingInfo] = useState(initialInfo);
 
     const handleOnBlur = e => {
@@ -32,7 +32,6 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
         const newInfo = { ...bookingInfo };
         newInfo[field] = value;
         setBookingInfo(newInfo);
-
     }
 
     const handleBookingSubmit = e => {
@@ -54,10 +53,11 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    setBookingSuccess(true)
+                    setBookingSuccess(true);
                     handleBookingClose();
                 }
             });
+
         e.preventDefault();
     }
 

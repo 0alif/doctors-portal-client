@@ -1,8 +1,9 @@
-import { Alert, Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
+import { Container, Typography, TextField, Button, CircularProgress, Alert } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import { Grid } from '@mui/material';
 import login from '../../../images/login.png'
-import useAuth from '../../../hooks/useAuth'
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import useAuth from './../../../hooks/useAuth';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
@@ -26,13 +27,12 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle(location, history)
     }
-
     return (
         <Container>
             <Grid container spacing={2}>
                 <Grid item sx={{ mt: 8 }} xs={12} md={6}>
                     <Typography variant="body1" gutterBottom>Login</Typography>
-                    {!isLoading && <form onSubmit={handleLoginSubmit}>
+                    <form onSubmit={handleLoginSubmit}>
                         <TextField
                             sx={{ width: '75%', m: 1 }}
                             id="standard-basic"
@@ -48,18 +48,19 @@ const Login = () => {
                             name="password"
                             onChange={handleOnChange}
                             variant="standard" />
+
                         <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Login</Button>
                         <NavLink
                             style={{ textDecoration: 'none' }}
                             to="/register">
-                            <Button variant="text">New user? Please Register</Button>
+                            <Button variant="text">New User? Please Register</Button>
                         </NavLink>
-                        <p>-------------------</p>
-                        <Button onClick={handleGoogleSignIn} variant="contained">Google Sign IN</Button>
-                    </form>}
-                    {isLoading && <CircularProgress />}
-                    {user?.email && <Alert severity="success">Login successfully!</Alert>}
-                    {authError && <Alert severity="error">{authError}</Alert>}
+                        {isLoading && <CircularProgress />}
+                        {user?.email && <Alert severity="success">Login successfully!</Alert>}
+                        {authError && <Alert severity="error">{authError}</Alert>}
+                    </form>
+                    <p>------------------------</p>
+                    <Button onClick={handleGoogleSignIn} variant="contained">Google Sign In</Button>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <img style={{ width: '100%' }} src={login} alt="" />

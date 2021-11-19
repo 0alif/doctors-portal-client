@@ -1,6 +1,7 @@
-import { Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import React from 'react';
 import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import BookingModal from '../BookingModal/BookingModal';
 

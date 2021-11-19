@@ -1,11 +1,12 @@
-import { Alert, Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
+import { Container, Typography, TextField, Button, CircularProgress, Alert } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
+import { Grid } from '@mui/material';
 import login from '../../../images/login.png'
+import { NavLink, useHistory } from 'react-router-dom';
+import useAuth from './../../../hooks/useAuth';
 
 const Register = () => {
-    const [loginData, setLoginData] = useState({})
+    const [loginData, setLoginData] = useState({});
     const history = useHistory();
     const { user, registerUser, isLoading, authError } = useAuth();
 
@@ -61,6 +62,7 @@ const Register = () => {
                             name="password2"
                             onBlur={handleOnBlur}
                             variant="standard" />
+
                         <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Register</Button>
                         <NavLink
                             style={{ textDecoration: 'none' }}
@@ -69,7 +71,7 @@ const Register = () => {
                         </NavLink>
                     </form>}
                     {isLoading && <CircularProgress />}
-                    {user?.email && <Alert severity="success">User created successfully!</Alert>}
+                    {user?.email && <Alert severity="success">User Created successfully!</Alert>}
                     {authError && <Alert severity="error">{authError}</Alert>}
                 </Grid>
                 <Grid item xs={12} md={6}>

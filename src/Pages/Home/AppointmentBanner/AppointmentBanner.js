@@ -7,8 +7,8 @@ import { Button, Typography } from '@mui/material';
 
 const appointmentBanner = {
     background: `url(${bg})`,
-    backgroundColor: 'rgba(45, 58,74,0.9)',
-    backgroundBlendMode: 'darken,luminosity',
+    backgroundColor: 'rgba(45, 58, 74, 0.9)',
+    backgroundBlendMode: 'darken, luminosity',
     marginTop: 175
 }
 
@@ -21,7 +21,12 @@ const AppointmentBanner = () => {
                         style={{ width: 400, marginTop: '-110px' }}
                         src={doctor} alt="" />
                 </Grid>
-                <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', textAlign: 'left' }}>
+                <Grid item xs={12} md={6} sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    textAlign: 'left'
+                }}>
                     <Box>
                         <Typography variant="h6" sx={{ mb: 5 }} style={{ color: '#5CE7ED' }}>
                             Appointment
@@ -30,9 +35,9 @@ const AppointmentBanner = () => {
                             Make an Appointment Today
                         </Typography>
                         <Typography variant="h6" sx={{ my: 5 }} style={{ color: 'white', fontSize: 14, fontWeight: 300 }}>
-                            Lorem ipsum dolor sit amet cinsectetur asipisicing facer totam aliquam presintium vel. Amet veniam doloremque laborum.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi facere totam aliquam praesentium vel. Amet veniam odio vero doloremque laborum.
                         </Typography>
-                        <Button variant="contained" style={{ backgroundColor: '#5CE7ED' }}>Lrarn More</Button>
+                        <Button variant="contained" style={{ backgroundColor: '#5CE7ED' }}>Learn More</Button>
                     </Box>
                 </Grid>
             </Grid>

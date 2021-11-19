@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import useAuth from '../../../hooks/useAuth';
+import React, { useState, useEffect } from 'react';
+import useAuth from './../../../hooks/useAuth';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,12 +9,16 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const Appointments = ({ date }) => {
-    const { user } = useAuth();
-    const [appointments, setAppointments] = useState([]);
+    const { user, token } = useAuth();
+    const [appointments, setAppointments] = useState([])
 
     useEffect(() => {
         const url = `http://localhost:5000/appointments?email=${user.email}&date=${date}`
-        fetch(url)
+        fetch(url, {
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+        })
             .then(res => res.json())
             .then(data => setAppointments(data));
     }, [date])
