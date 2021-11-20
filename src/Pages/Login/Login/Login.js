@@ -32,7 +32,7 @@ const Login = () => {
             <Grid container spacing={2}>
                 <Grid item sx={{ mt: 8 }} xs={12} md={6}>
                     <Typography variant="body1" gutterBottom>Login</Typography>
-                    <form onSubmit={handleLoginSubmit}>
+                    {!isLoading && <form onSubmit={handleLoginSubmit}>
                         <TextField
                             sx={{ width: '75%', m: 1 }}
                             id="standard-basic"
@@ -55,10 +55,10 @@ const Login = () => {
                             to="/register">
                             <Button variant="text">New User? Please Register</Button>
                         </NavLink>
-                        {isLoading && <CircularProgress />}
-                        {user?.email && <Alert severity="success">Login successfully!</Alert>}
-                        {authError && <Alert severity="error">{authError}</Alert>}
-                    </form>
+                    </form>}
+                    {isLoading && <CircularProgress />}
+                    {user?.email && <Alert severity="success">Login successfully!</Alert>}
+                    {authError && <Alert severity="error">{authError}</Alert>}
                     <p>------------------------</p>
                     <Button onClick={handleGoogleSignIn} variant="contained">Google Sign In</Button>
                 </Grid>
